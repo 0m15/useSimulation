@@ -69,7 +69,7 @@ export default function ThreeRenderer({ nodes, onClickCanvas, simulation }) {
         //     },
         // })
 
-        dummy.position.set(anim.x, anim.y, 0)
+        dummy.position.set(anim.x, -anim.y, 0)
         dummy.scale.set(d.r/32*anim.scale*2, d.r/32*anim.scale*2, d.r/32*anim.scale*2)
         dummy.updateMatrix()
       }
