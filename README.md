@@ -15,11 +15,11 @@ Dataviz is modularized into following components:
 
 To switch renderer, open `App.js` and use
 
-    <Graph type="webgl">
+###    <Graph type="webgl">
 
 or
 
-    <Graph type="dom">
+###    <Graph type="dom">
 
 ## Development
 
