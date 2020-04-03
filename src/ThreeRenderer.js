@@ -31,14 +31,10 @@ export default function ThreeRenderer({ nodes, onClickCanvas, simulation }) {
 
   // Compute per-frame instance positions
   const ref = useRef()
-  let t = 0
+
   useFrame((state, delta) => {
-    // ref.current.rotation.x = Math.sin(time / 4)
-    // ref.current.rotation.y = Math.sin(time / 2)
     let x = 0
     let y = 0
-    t += 0.01
-    //const nodes = simulation.nodes()
 
     for (let i = 0; i < 1000; i++) {
       if (nodes[i] !== undefined) {
@@ -59,6 +55,7 @@ export default function ThreeRenderer({ nodes, onClickCanvas, simulation }) {
         const anim = animations.current[d.id]
         anim.x = lerp(anim.x, x, delta*2)
         anim.y = lerp(anim.y, y, delta*2)
+        anim.scale = lerp(anim.scale, 1, delta*2)
 
         // if (anim.next.x < x) anim.next.x = lerp(anim.prev.x, x, t)
         // if (anim.next.y < y) anim.next.y = lerp(anim.prev.y, y, t)
@@ -73,7 +70,7 @@ export default function ThreeRenderer({ nodes, onClickCanvas, simulation }) {
         // })
 
         dummy.position.set(anim.x, anim.y, 0)
-        dummy.scale.set((d.r / 32) * 2, (d.r / 32) * 2, (d.r / 32) * 2)
+        dummy.scale.set(d.r/32*anim.scale*2, d.r/32*anim.scale*2, d.r/32*anim.scale*2)
         dummy.updateMatrix()
       }
       ref.current.setMatrixAt(i++, dummy.matrix)
