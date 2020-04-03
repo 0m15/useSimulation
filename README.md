@@ -4,9 +4,9 @@
 
 Dataviz is modularized into following components:
 
-- <Graph/> to handle the data
-- <Simulation/> to enhance data with simulation forces
-- <Renderer> to render the nodes to screen
+- `<Graph/>` to handle the data
+- `<Simulation/>` to enhance data with simulation forces
+- `<Renderer>` to render the nodes to screen
 
 ## Avilable renderers (so far)
 
