@@ -239,10 +239,10 @@ export default function ThreeRenderer({
       <instancedMesh
         ref={ref}
         args={[geometry, null, maxNodes]}
-        onPointerMove={e => {
-          setSelectedNode(e.instanceId)
-        }}
-        onPointerOut={e => setSelectedNode(undefined)}
+        // onPointerMove={e => {
+        //   setSelectedNode(e.instanceId)
+        // }}
+        // onPointerOut={e => setSelectedNode(undefined)}
       >
         {/* <meshBasicMaterial attach="material" /> */}
         <rawShaderMaterial

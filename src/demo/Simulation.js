@@ -21,11 +21,23 @@ export default function Simulation() {
   }
 
   const rootRadius = measures.radius
+  const currentNode = useRef({})
   const depth = useRef(1)
+
+  // store prev nodes
+  const prevNodes = useRef()
+
+  useEffect(() => {
+    prevNodes.current = nodes
+  }, [nodes])
 
   // click
   const onCanvasClick = useCallback(
     evt => {
+      if (currentNode.current.index !== undefined) {
+        return
+      }
+
       const p = {
         x: evt.clientX - measures.x,
         y: evt.clientY - measures.y
@@ -53,7 +65,16 @@ export default function Simulation() {
 
   // click node
   const onClickNode = useCallback(
+    // go back when clicking root
+
     nodeClicked => {
+      currentNode.current = nodeClicked
+
+      if (nodeClicked.index === 0) {
+        updateSimulation(prevNodes.current)
+        return
+      }
+
       const siblings = nodes.filter(d => d.centroid === nodeClicked.centroid)
 
       //   if (nodeClicked.id !== 0) {
@@ -70,8 +91,8 @@ export default function Simulation() {
         const dist = distance(
           nodeClicked.x / width,
           nodeClicked.y / height,
-          node.x / width,
-          node.y / height
+          node.ox / width,
+          node.oy / height
         )
         const scaledRadius = Math.pow(1 + 0.15 - dist, 5) * node.or
         const scaledRootRadius = rootRadius * 0.5 //(1 - dist) * rootRadius
@@ -89,8 +110,6 @@ export default function Simulation() {
 
         // root
         if (isRoot) {
-          console.log({ root: node })
-
           delete node.fx
           delete node.fy
 
