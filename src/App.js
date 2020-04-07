@@ -1,7 +1,8 @@
-import React, { useMemo, useRef, useCallback, useState, useEffect } from "react"
+import React from "react"
+import CovidSimulation from "./demo/CovidSimulation"
+import DynamicNodesSimulation from "./demo/Simulation"
 import "./App.css"
-import Graph from "./Graph"
 
 export default function App() {
-  return <Graph type="webgl"/>
+  return <DynamicNodesSimulation />
 }

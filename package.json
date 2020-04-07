@@ -6,6 +6,11 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/core-js": "^2.5.3",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.0",
+    "@types/react": "^16.9.32",
+    "@types/react-dom": "^16.9.6",
     "d3": "^5.15.0",
     "d3-force": "^2.0.1",
     "d3-hierarchy": "^1.1.9",
@@ -20,7 +25,9 @@
     "react-transition": "^1.0.3",
     "react-transition-group": "^4.3.0",
     "react-use-dimensions": "^1.2.1",
-    "three": "^0.115.0"
+    "three": "^0.115.0",
+    "typescript": "^3.8.3",
+    "workerize-loader": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
